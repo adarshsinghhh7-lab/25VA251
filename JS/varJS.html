@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //JS variable data types
+        //primitive data types: string, number, boolean, null, undefined, symbol
+        //non-primitive data types: object, array, function
+        //string
+        let name = "ABES"; 
+        console.log(name);
+        console.log(typeof(name));   
+
+        //number
+        let myCot=8810862208;
+        console.log(myCot);
+        console.log(typeof(myCot));
+        //boolean
+        let add=null;
+        console.log(add);
+        console.log(typeof(add));
+        //undefined
+        let email;
+        console.log(email);
+        console.log(typeof(email));
+        //bigint
+        let bigAMT = BigInt(12345678901234567890123456789012345678879);
+        console.log(bigAMT);
+        console.log(typeof(bigAMT));
+        //Symbol - A unique primitive identifier
+        // The java script ES6 introduced a new primitive data type called Symbol. Symbols are immutable (cannot be changed) and are unique.
+
+        let val1 = Symbol("id");
+        let val2 = Symbol("id");
+        console.log(val1);
+        console.log(val2);
+
+        //reference or non-primitive - defined in pair i.e. key and value
+        //object{}, function() and array[]
+        let myINfo = {
+            name: "Adarsh",
+            mob: 8810862208,
+            email: "hjgjhasdgjhagd@gmail.com ",
+            address: null
+        }
+        //access object's keys 
+        console.log(myINfo);
+        console.log(myINfo.name);
+
+        
+
+        </script> 
+</body>
+</html>
