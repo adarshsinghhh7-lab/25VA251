@@ -19,13 +19,25 @@
         //switch---case
         let grade='A';
         switch(grade){
-            case 'A': result("First division");
+            case 'A': result=("First division");
             break;
-            case 'B': result("Second division");
+            case 'B': result=("Second division");
             break;
-            case 'C': result("Third division");
+            case 'C': result=("Third division");
             break;
             default:result="fail";
+        }
+        console.log(result);
+        //if....elseif....else....
+        let marks=67;
+        if(marks>=60){
+            console.log("First division marks");
+        }
+        else if(marks<59 && marks>40){
+            console.log("second division marks");
+        }
+        else{
+            console.log("third division marks")
         }
        
     </script>
