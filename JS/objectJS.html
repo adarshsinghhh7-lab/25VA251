@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object in JS</title>
+</head>
+<body>
+    <script>
+        // object()- it is a collection of keys and values 
+        // create objet for student
+        let student={
+            ID : 101,
+            name:"Abhay",
+            age: 18,
+            isMarried: false,
+            address: {
+                city: "ghaziabad",
+                state: "UP",
+                country: "India"
+            },
+            Education: ["Btech", "cse-aiml", 18, 2026],
+            getinfo: function() {
+                return"My Details are: " + student.ID + " and " + student.name;
+            },
+            examdone:null
+        };
+        console.log(student);
+        console.log(typeof student);
+        console.log('id'in student);
+        
+        console.log(student.getinfo());
+        console.log(delete student.name);
+        console.log(student);
+
+        // object.lenght
+        let keys=Object.keys(student);
+        console.log(keys.length);
+
+        // iterate keys of object
+        // using for in loop
+        for(let i=0; i<keys.length; i++){
+            console.log(student[keys[i]]);
+        }
+
+        // for in loop
+        for(let x in student){
+            console.log(student[x]);
+        }   
+        // create an object using new keyword
+        let myinfo=new Object();
+        myinfo.name="Abhay";
+        myinfo.age=18;
+        myinfo.isMarried=false;
+        myinfo.city="Ghaziabad";
+
+        console.log(myinfo['age']);
+
+        let studentList=[
+            "Vikas", "Abhi", "Rohit", "Satyarth"
+        ];
+
+        for(let i=0; i<studentList.length; i++){
+            console.log(studentList[i]);
+        }
+
+        //using for .. in loop
+        for(let x in studentList){
+            console.log(studentList[x]);
+        }
+
+        //using for .. of loop .. iterates over the values of interable objects
+        for(let y of studentList){
+            console.log(y);
+        }
+    </script> 
+</body>
+</html>
