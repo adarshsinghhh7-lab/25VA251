@@ -3,4 +3,9 @@ function show(){
     //document.getElementByID("display").innerHTML=name;
     alert(name);
 }
-//dom
+//colorchange on dbl click
+function colorChange(){
+    document.getElementById("text").style.color="red";
+}
+
+
