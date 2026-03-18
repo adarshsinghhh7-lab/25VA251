@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         //without parameters
@@ -20,14 +22,14 @@
         demo1("React");
 
         //with default parameters
-        function cal(a,b=30) {
-            console.log("addition of two number is " + (a+b));
+        function cal(a, b = 30) {
+            console.log("addition of two number is " + (a + b));
         }
         demo1("React");
         cal(12);
         demo();
         //anonymous function
-        let msg = function() {
+        let msg = function () {
             console.log("Hello Advanced JS");
         }
         msg();
@@ -37,85 +39,114 @@
             console.log("Hello function as an arrow ");
             msg1();
         }
-         //arrow function using multilines
-         let add = (a,b) => {
+        //arrow function using multilines
+        let add = (a, b) => {
             let c = a + b;
             console.log("addition of two number is " + c);
-         }
-         add(4,7);
+        }
+        add(4, 7);
 
-         //IIFEE - Immediately Invoked Function Expression
-         //(IIFEE) is a javacsript function that runs as soon as it is defined.
-            (function() {
-                console.log(" IIFEE in JS");
-            })();
+        //IIFEE - Immediately Invoked Function Expression
+        //(IIFEE) is a javacsript function that runs as soon as it is defined.
+        (function () {
+            console.log(" IIFEE in JS");
+        })();
 
-            //IIFEE using arrow function
-            (() => {
-                console.log(" IIFEE in JS using arrow function");
-            })();
+        //IIFEE using arrow function
+        (() => {
+            console.log(" IIFEE in JS using arrow function");
+        })();
 
-            //callback function:-
-            //call back function is a function that is passed as an argument to another function and is executed after some operation is completed.
-            function mul(callback) {
-                var num1 = 5;
-                console.log("first number is " + num1);
-                var num2 = 10;
-                console.log("second number is " + num2);
-                var result = num1 * num2;
-                callback(result);
+        //callback function:-
+        //call back function is a function that is passed as an argument to another function and is executed after some operation is completed.
+        function mul(callback) {
+            var num1 = 5;
+            console.log("first number is " + num1);
+            var num2 = 10;
+            console.log("second number is " + num2);
+            var result = num1 * num2;
+            callback(result);
+
+        }
+        function result(result) {
+            console.log("The result is: " + result);
+        }
+        mul(result);
+
+        //callback function using setTimeout API
+        function msg2() {
+            console.log("Hello after 3 seconds");
+            document.writeln("Hello");
+        }
+        function loading() {
+            document.writeln("Loading...");
+        };
+        setTimeout(msg2, 3000);
+        loading();
+
+        // map fiter and reduce function in JS
+        //the map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
+
+        let num = [1, 2, 3, 4, 5];
+        let finalresult = num.map(n => n * 2);
+        console.log(finalresult);
+
+        //filter method
+        //filter method :- method creates a new array with all elements that pass the test implemented by the provided function.
+        let finalresult1 = num.filter(n => n > 3);
+        console.log(finalresult1);
+
+        //reduce method
+        //reduce method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
+        let finalresult2 = num.reduce((acc, n) => acc + n, 0);
+        console.log(finalresult2);
+
+        //promise function
+        // A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+        let myPromise = new Promise((resolve, reject) => {
+            let success = true; // Simulating success or failure
+            if (success) {
+                resolve("Promise resolved successfully!");
+            } else {
+                reject("Promise rejected.");
+            }
+        });
+        myPromise
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
+            .finally(() => console.log("Promise is completed"));
+        //async and await function
+        //async and await are used to handle asynchronous operations in JavaScript. The async keyword is used to declare an asynchronous function, and the await keyword is used to wait for a Promise to resolve before proceeding with the execution of the code.
+        async function userdata() {
+            try {
+                let data = await fetch('https://dummyjson.com/products');
+                let updatedData = await data.json();
+                console.log(updatedData);
+            }
+            catch (error) {
+                console.log("NOT fetched " + error);
 
             }
-            function result(result) {
-                console.log("The result is: " + result);
-            }
-            mul(result);
-            
-            //callback function using setTimeout API
-            function msg2() {
-                console.log("Hello after 3 seconds");
-                document.writeln("Hello");
-            }
-            function loading(){
-                document.writeln("Loading...");
-            };
-            setTimeout(msg2, 3000);
-            loading();
+        }
+        userdata();
+        //Local storage-Local storage is a web storage feature in JavaScript that allows you to store key-value pairs in a web browser. Unlike cookies, the data stored in local storage does not expire and remains available even after the browser is closed and reopened. This makes it useful for persisting data across sessions, enhancing user experience by maintaining state and preferences.
+        let userInfo = {
+            name: "John",
+            age: 19,
+            mob: 8819989928,
+            email: "john.banega.don@gmail.com"
+        }
+        //convert JSON object to string
+        localStorage.setItem('preferences', JSON.stringify(userInfo));
+        //retrieve the string and parse it back into an object
+        let storagePreference = JSON.parse(localStorage.getItem('preferences'));
+        console.log(storagePreference.name);
 
-            // map fiter and reduce function in JS
-            //the map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
-
-            let num = [1,2,3,4,5];
-            let finalresult = num.map(n=>n*2);
-            console.log(finalresult);
-
-            //filter method
-            //filter method :- method creates a new array with all elements that pass the test implemented by the provided function.
-            let finalresult1 = num.filter(n=>n>3);
-            console.log(finalresult1);
-
-            //reduce method
-            //reduce method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
-            let finalresult2 = num.reduce((acc, n) => acc + n, 0);
-            console.log(finalresult2);
-
-            //promise function
-            // A Promise is an object representing the eventual completion or failure of an asynchronous operation.
-            let myPromise = new Promise((resolve, reject) => {
-                let success = true; // Simulating success or failure
-                if (success) {
-                    resolve("Promise resolved successfully!");
-                } else {
-                    reject("Promise rejected.");
-                }
-            }); 
-            myPromise.then(result=>console.log(result)).catch(error=>console.log(error));
-            finaly(console.log("Promise is completed"));
-     
 
 
 
     </script>
 
 </body>
+
 </html>
