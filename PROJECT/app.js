@@ -1,92 +1,59 @@
-const leftBtn= document.querySelector(".l-btn");
-const rightBtn = document.querySelector(".r-btn");
+document.addEventListener('DOMContentLoaded', function () {
+  // Hero Slider Logic
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentSlide = 0;
+  let slideInterval;
 
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if (i === index) {
+        slide.classList.add('active');
+      }
+    });
+  }
 
-rightBtn.addEventListener("click",
-    function(event){
-        const conent=document.querySelector(".product-slide");
-        conent.scrollLeft +=1100;
-        event.preventDefault();
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
 
-})
-leftBtn.addEventListener("click",
-    function(event){
-        const conent=document.querySelector(".product-slide");
-        conent.scrollLeft -=1100;
-        event.preventDefault();
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
 
-})
-const leftBtn1= document.querySelector(".btn-1b");
-const rightBtn1 = document.querySelector(".btn-1a");
+  function startSlideShow() {
+    slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+  }
 
+  function stopSlideShow() {
+    clearInterval(slideInterval);
+  }
 
-rightBtn1.addEventListener("click",
-    function(event){
-        const conent=document.querySelector(".product-slide-1");
-        conent.scrollLeft +=1100;
-        event.preventDefault();
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    stopSlideShow();
+    startSlideShow();
+  });
 
-})
-leftBtn1.addEventListener("click",
-    function(event){
-        const conent=document.querySelector(".product-slide-1");
-        conent.scrollLeft -=1100;
-        event.preventDefault();
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    stopSlideShow();
+    startSlideShow();
+  });
 
-})
-const leftBtn2= document.querySelector(".btn-1c");
-const rightBtn2 = document.querySelector(".btn-1d");
+  showSlide(currentSlide);
+  startSlideShow();
 
-
-rightBtn2.addEventListener("click",
-    function(event){
-        const conent=document.querySelector(".product-slide-2");
-        conent.scrollLeft +=1100;
-        event.preventDefault();
-
-})
-leftBtn2.addEventListener("click",
-    function(event){
-        const conent=document.querySelector(".product-slide-2");
-        conent.scrollLeft -=1100;
-        event.preventDefault();
-
-})
-
-const backtop = document.querySelector(".backtop");
-
-backtop.addEventListener("click",()=>{
+  // Back to Top button
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  backToTopBtn.addEventListener('click', () => {
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    })
-})
-
-const sidebar=document.querySelector(".sidebar");
-const cross=document.querySelector(".fa-xmark");
-const black=document.querySelector(".black");
-const sidebtn=document.querySelector(".second-1");
-
-sidebtn.addEventListener("click",()=>{
-    sidebar.classList.add("active");
-    cross.classList.add("active");
-    black.classList.add("active");
-    document.body.classList.add("stop-scroll");
-})
-cross.addEventListener("click",()=>{
-    sidebar.classList.remove("active");
-    cross.classList.remove("active");
-    black.classList.remove("active");
-    document.body.classList.remove("stop-scroll");
-})
-
-const sign=document.querySelector(".ac");
-const tri=document.querySelector(".triangle");
-const signin=document.querySelector(".hdn-sign");
-
-sign.addEventListener("click",()=>{
-    black.classList.toggle("active-1");
-    signin.classList.toggle("active");
-    tri.classList.toggle("active");
-    document.body.classList.toggle("stop-scroll");
-})
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
+});
